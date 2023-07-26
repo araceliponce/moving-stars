@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moving Stars</title>
+  <!--  Idea from https://dev.to/0shuvo0/pure-css-infinite-spacegalaxy-with-just-one-div-4o02 -->
+</head>
+
+<body>
+
+
+  <main class="hero-body">
+    <div class="stars"></div>
+    <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius, illum? Inventore quas repellat quibusdam necessitatibus vero cum blanditiis dolore nihil at ipsum, ex reprehenderit id animi quisquam, exercitationem officia. Reprehenderit.</p> -->
+  </main>
+  <script>
+    function randomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min
+    }
+
+    const STAR_COUNT = 100
+    let result = ""
+    for (let i = 0; i < STAR_COUNT; i++) {
+      result += `${randomNumber(0, 100)}vw ${randomNumber(-50, 500)}vh ${randomNumber(0, 2)}px #fff,`
+    }
+
+
+    console.log(result.substring(0, result.length - 1));
+
+
+
+  </script>
+  <style>
+    :root {
+      color-scheme: dark light;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .hero-body {
+      --color-1: hsl(167, 75%, 54%);
+      --color-2: hsl(35, 86%, 59%);
+      --color-3: rgb(193, 81, 238);
+      --color-4: rgb(250, 144, 94);
+      --color-5: rgb(200, 243, 81);
+
+    }
+
+    .dark-mode .hero-body {
+      --color-1: hsl(167, 75%, 54%);
+      --color-2: hsl(35, 86%, 59%);
+      --color-3: rgb(193, 81, 238);
+      --color-4: rgb(250, 144, 94);
+      --color-5: rgb(200, 243, 81);
+    }
+
+    .hero-body {
+      background: cornflowerblue;
+      height: 120vh;
+      background-color: rgba(0, 0, 0, 0);
+      background: linear-gradient(136deg, var(--color-1), var(--color-2), var(--color-3), var(--color-4), var(--color-5)) 0% 0% / 1200% 1200%;
+
+      animation: animBg 70s ease infinite;
+      background-blend-mode: difference;
+    }
+
+    @keyframes animStar {
+
+      0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
+
+      100% {
+        -webkit-transform: translateY(-500vh);
+        transform: translateY(-500vh);
+      }
+    }
+
+    @keyframes animBg {
+      0% {
+        background-position: 0 7%;
+      }
+
+      50% {
+        background-position: 100% 94%;
+      }
+
+      100% {
+        background-position: 0 7%;
+      }
+    }
+
+    .stars::before,
+    .stars::after {
+      content: "";
+      position: absolute;
+    }
+
+    .stars::before {
+      content: "";
+      position: absolute;
+      top: 55vh;
+      right: 22vw;
+    }
+
+    .stars::after {
+      content: "";
+      position: absolute;
+      top: 44vh;
+      left: 33vw;
+    }
+
+    .stars,
+    .stars::after,
+    .stars::before {
+      background: transparent;
+      color: red;
+      width: 3px;
+      height: 3px;
+      border-radius: 100%;
+      animation: animStar 80s linear infinite;
+      box-shadow: inset 60vw 230vh 1px #fff, 34vw 160vh 1px #fff, 88vw 361vh 2px #fff, 57vw 272vh 0px #fff, 80vw 18vh 1px #fff, 66vw 12vh 0px #fff, 5vw 132vh 0px #fff, 44vw 349vh 0px #fff, 89vw 399vh 2px #fff, 52vw 18vh 1px #fff, 16vw 281vh 2px #fff, 42vw 168vh 0px #fff, 17vw 363vh 2px #fff, 25vw 367vh 1px #fff, 6vw 320vh 0px #fff, 83vw 209vh 1px #fff, 60vw 249vh 1px #fff, 98vw 265vh 2px #fff, 37vw 253vh 1px #fff, 18vw 441vh 1px #fff, 7vw 185vh 1px #fff, 26vw -8vh 1px #fff, 22vw 292vh 2px #fff, 60vw 215vh 0px #fff, 36vw 287vh 1px #fff, 24vw -29vh 1px #fff, 76vw 127vh 1px #fff, 66vw 486vh 1px #fff, 5vw -28vh 0px #fff, 40vw 412vh 2px #fff, 95vw 171vh 2px #fff, 30vw 425vh 1px #fff, 67vw -40vh 0px #fff, 33vw 44vh 0px #fff, 2vw 167vh 2px #fff, 67vw 135vh 0px #fff, 47vw 130vh 1px #fff, 71vw -32vh 0px #fff, 34vw 350vh 0px #fff, 22vw 12vh 2px #fff, 15vw 374vh 0px #fff, 10vw 50vh 1px #fff, 62vw -14vh 2px #fff, 97vw 93vh 1px #fff, 93vw 160vh 2px #fff, 22vw 417vh 0px #fff, 86vw 159vh 2px #fff, 93vw 5vh 2px #fff, 36vw 126vh 1px #fff, 74vw 91vh 2px #fff, 8vw 224vh 0px #fff, 70vw 173vh 1px #fff, 83vw 493vh 1px #fff, 75vw 140vh 1px #fff, 34vw 8vh 0px #fff, 43vw -40vh 0px #fff, 58vw 38vh 2px #fff, 71vw 482vh 0px #fff, 86vw 349vh 0px #fff, 53vw 474vh 0px #fff, 6vw 311vh 0px #fff, 62vw 360vh 1px #fff, 84vw 21vh 1px #fff, 13vw 461vh 1px #fff, 55vw -48vh 0px #fff, 10vw 427vh 0px #fff, 1vw 347vh 2px #fff, 82vw 133vh 2px #fff, 9vw 472vh 2px #fff, 99vw 337vh 1px #fff, 16vw 4vh 1px #fff, 71vw -17vh 1px #fff, 25vw -25vh 1px #fff, 95vw 43vh 2px #fff, 86vw 489vh 1px #fff, 46vw 131vh 2px #fff, 95vw 197vh 0px #fff, 77vw 251vh 0px #fff, 100vw 330vh 1px #fff, 48vw 416vh 2px #fff, 99vw 130vh 2px #fff, 71vw 27vh 2px #fff, 46vw 3vh 2px #fff, 47vw 107vh 0px #fff, 57vw 377vh 2px #fff, 19vw 200vh 2px #fff, 64vw 312vh 2px #fff, 59vw 329vh 0px #fff, 27vw 112vh 2px #fff, 4vw 282vh 2px #fff, 86vw -42vh 1px #fff, 4vw 248vh 2px #fff, 77vw 219vh 1px #fff, 16vw 280vh 2px #fff, 49vw 7vh 2px #fff, 10vw 397vh 2px #fff, 33vw 451vh 2px #fff, 19vw 108vh 0px #fff, 30vw -29vh 0px #fff, 68vw -45vh 2px #fff;
+    }
+  </style>
+</body>
+
+</html>
